@@ -25,7 +25,8 @@ public static class T
 	}	
 	
 	//----------
-	//fixed delta time
+	
+	//fixed delta time 
 	public static float FactorFDT = 1;
 	static bool FifadoFDT = false;
 	public static void FijarFDT(float valor)
