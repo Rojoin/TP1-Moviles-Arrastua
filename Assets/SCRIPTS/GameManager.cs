@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour {
     IEnumerator Start() {
         yield return null;
         IniciarTutorial();
+        //CambiarACarrera();
     }
 
     void Update() {
@@ -62,14 +63,17 @@ public class GameManager : MonoBehaviour {
         switch (EstAct) {
             case EstadoJuego.Calibrando:
 
-                if (Input.GetKeyDown(KeyCode.W)) {
+                if (InputManager.Instance.GetAxis($"Vertical{0}") >0.1f) {
                     Player1.Seleccionado = true;
                 }
 
-                if (Input.GetKeyDown(KeyCode.UpArrow)) {
+                if (InputManager.Instance.GetAxis($"Vertical{1}") >0.1f) {
                     Player2.Seleccionado = true;
                 }
 
+                if (Input.GetKey(KeyCode.Alpha9)) {
+                    CambiarACarrera();
+                }
                 break;
 
 

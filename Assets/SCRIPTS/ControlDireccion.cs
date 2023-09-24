@@ -1,62 +1,83 @@
 using UnityEngine;
 
-public class ControlDireccion : MonoBehaviour 
+public class ControlDireccion : MonoBehaviour
 {
-	public enum TipoInput {AWSD, Arrows}
-	public TipoInput InputAct = TipoInput.AWSD;
+    public enum TipoInput
+    {
+        AWSD,
+        Arrows
+    }
 
-	float Giro = 0;
-	
-	public bool Habilitado = true;
-	CarController carController;
-		
-	//---------------------------------------------------------//
-	
-	// Use this for initialization
-	void Start () 
-	{
-		carController = GetComponent<CarController>();
-	}
-	
-	// Update is called once per frame
-	void Update () 
-	{
-		switch(InputAct)
-		{
-            case TipoInput.AWSD:
-                if (Habilitado) {
-                    if (Input.GetKey(KeyCode.A)) {
-						Giro = -1;
-                    }
-                    else if (Input.GetKey(KeyCode.D)) {
-						Giro = 1;
-                    }
-                    else {
-						Giro = 0;
-					}
-                }
-                break;
-            case TipoInput.Arrows:
-                if (Habilitado) {
-                    if (Input.GetKey(KeyCode.LeftArrow)) {
-						Giro = -1;
-					}
-                    else if (Input.GetKey(KeyCode.RightArrow)) {
-						Giro = 1;
-					}
-                    else {
-						Giro = 0;
-					}
-                }
-                break;
-        }
+    public int playerId;
+    public TipoInput InputAct = TipoInput.AWSD;
 
-		carController.SetGiro(Giro);
-	}
+    float Giro = 0;
 
-	public float GetGiro()
-	{
-		return Giro;
-	}
-	
+    public bool Habilitado = true;
+    CarController carController;
+
+    //---------------------------------------------------------//
+
+    // Use this for initialization
+    void Start()
+    {
+        carController = GetComponent<CarController>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+
+        // switch (InputAct)
+        // {
+        //     case TipoInput.AWSD:
+        //         if (Habilitado)
+        //         {
+        //             if (Input.GetKey(KeyCode.A))
+        //             {
+        //                 Giro = -1;
+        //             }
+        //             else if (Input.GetKey(KeyCode.D))
+        //             {
+        //                 Giro = 1;
+        //             }
+        //             else
+        //             {
+        //                 Giro = 0;
+        //             }
+        //         }
+        //
+        //         break;
+        //     case TipoInput.Arrows:
+        //         if (Habilitado)
+        //         {
+        //             if (Input.GetKey(KeyCode.LeftArrow))
+        //             {
+        //                 Giro = -1;
+        //             }
+        //             else if (Input.GetKey(KeyCode.RightArrow))
+        //             {
+        //                 Giro = 1;
+        //             }
+        //             else
+        //             {
+        //                 Giro = 0;
+        //             }
+        //         }
+        //
+        //         break;
+        // }
+     
+         Giro = InputManager.Instance.GetAxis($"Horizontal{playerId}");
+   
+
+
+        carController.SetGiro(Giro);
+    }
+
+    public float GetGiro()
+    {
+        return Giro;
+    }
 }
