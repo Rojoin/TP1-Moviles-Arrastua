@@ -77361,6 +77361,16 @@ MonoBehaviour:
   EstAct: 0
   Player1: {fileID: 13058}
   Player2: {fileID: 27660010}
+  Player1Cam:
+  - {fileID: 6356}
+  - {fileID: 6359}
+  - {fileID: 6358}
+  Player2Cam:
+  - {fileID: 6360}
+  - {fileID: 6355}
+  - {fileID: 6357}
+  Player1Canvas: {fileID: 1187412604}
+  Player2Canvas: {fileID: 1643806369}
   ConteoPosEsc:
     serializedVersion: 2
     x: 0

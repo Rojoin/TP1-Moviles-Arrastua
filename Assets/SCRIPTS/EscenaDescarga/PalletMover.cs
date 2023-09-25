@@ -25,7 +25,7 @@ public class PalletMover : ManejoPallets
                     PrimerPaso();
                 }
 
-                if (Tenencia() && InputManager.Instance.GetAxis($"Vertical{0}") < -0.1f)
+                if (Tenencia() && InputManager.Instance.GetAxis($"Vertical{0}") < -0.2f)
                 {
                     SegundoPaso();
                 }
@@ -42,7 +42,7 @@ public class PalletMover : ManejoPallets
                     PrimerPaso();
                 }
 
-                if (Tenencia() && InputManager.Instance.GetAxis($"Vertical{1}")  < -0.1f)
+                if (Tenencia() && InputManager.Instance.GetAxis($"Vertical{1}")  < -0.2f)
                 {
                     SegundoPaso();
                 }
