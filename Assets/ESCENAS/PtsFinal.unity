@@ -542,6 +542,8 @@ MonoBehaviour:
   Ganadores:
   - {fileID: 21300000, guid: 0768d53f515557c4d91cf99c39b08b85, type: 3}
   - {fileID: 21300000, guid: 9f7366328ab6f594693222a9dc9bee1b, type: 3}
+  - {fileID: 21300000, guid: dd4da67eeda41f74d9a38464938c36e6, type: 3}
+  - {fileID: 21300000, guid: fcba284dcc444b34aa343afd570ff6fd, type: 3}
   leftPlayer: {fileID: 1312159240}
   rightPlayer: {fileID: 134267225}
   winnerImage: {fileID: 809706831}

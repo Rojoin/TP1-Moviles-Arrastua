@@ -41,7 +41,7 @@ public class InputManager
         return GetOrAddAxis(inputName);
 #endif
 #if UNITY_STANDALONE
-        Input.GetAxis(inputName);
+       return Input.GetAxis(inputName);
 #endif
     }
 }

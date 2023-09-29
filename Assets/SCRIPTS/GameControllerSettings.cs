@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 public class GameControllerSettings
 {
@@ -17,6 +18,8 @@ public class GameControllerSettings
         Double
     }
 
+    string maxScoreKey = "MaxScore";
+    private float maxScore;
     public Difficulty selectedDifficulty = Difficulty.Easy;
     public GameMode selectedGameMode = GameMode.Single;
     private static GameControllerSettings instance;
@@ -30,6 +33,21 @@ public class GameControllerSettings
 
             return instance;
         }
+    }
+
+    public void SetMaxScore(float maxScore)
+    {
+        PlayerPrefs.SetFloat(maxScoreKey, maxScore);
+    }
+
+    public float GetMaxScore()
+    {
+        if (PlayerPrefs.HasKey(maxScoreKey))
+        {
+            return PlayerPrefs.GetFloat(maxScoreKey);
+        }
+
+        return 0;
     }
 
     public void setDifficulty(Difficulty newDif)

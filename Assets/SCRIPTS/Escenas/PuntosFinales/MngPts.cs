@@ -8,7 +8,7 @@ public class MngPts : MonoBehaviour
 {
     public float TiempEmpAnims = 2.5f;
     float Tempo = 0;
-    
+
 
     public Sprite[] Ganadores;
     public TextMeshProUGUI leftPlayer;
@@ -98,31 +98,46 @@ public class MngPts : MonoBehaviour
         }
     }
 
-  
+
     //---------------------------------//
 
 
     void SetGanador()
     {
-        switch (DatosPartida.LadoGanadaor)
+        if (GameControllerSettings.Instance.selectedGameMode == GameControllerSettings.GameMode.Single)
         {
-            case DatosPartida.Lados.Der:
+            var currentMaxScore = GameControllerSettings.Instance.GetMaxScore();
+            if (DatosPartida.PtsGanador > currentMaxScore)
+            {
+                winnerImage.sprite = Ganadores[2];
+                GameControllerSettings.Instance.SetMaxScore(DatosPartida.PtsGanador);
+            }
+            else
+            {
+                winnerImage.sprite =  Ganadores[3];
+            }
+        }
+        else
+        {
+            switch (DatosPartida.LadoGanadaor)
+            {
+                case DatosPartida.Lados.Der:
 
-                winnerImage.sprite = Ganadores[1];
+                    winnerImage.sprite = Ganadores[1];
 
-                break;
+                    break;
 
-            case DatosPartida.Lados.Izq:
+                case DatosPartida.Lados.Izq:
 
-                winnerImage.sprite = Ganadores[0];
+                    winnerImage.sprite = Ganadores[0];
 
-                break;
+                    break;
+            }
         }
     }
 
     void SetDinero()
     {
-
         if (DatosPartida.LadoGanadaor == DatosPartida.Lados.Izq) //izquierda
         {
             if (!PrimerImaParp) //para que parpadee
@@ -134,7 +149,7 @@ public class MngPts : MonoBehaviour
         {
             leftPlayer.text = "$" + Viz.PrepararNumeros(DatosPartida.PtsPerdedor);
         }
-        
+
 
         if (DatosPartida.LadoGanadaor == DatosPartida.Lados.Der) //derecha
         {
@@ -142,7 +157,6 @@ public class MngPts : MonoBehaviour
                 rightPlayer.text = "$" + Viz.PrepararNumeros(DatosPartida.PtsGanador);
             else
                 rightPlayer.text = "";
-            
         }
         else
         {
