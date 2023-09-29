@@ -8,7 +8,7 @@ public class MenuController : MonoBehaviour
     [SerializeField]private CanvasGroup Menu;
     [SerializeField]private CanvasGroup ChooseDifficulty;
 
-    private void Awake()
+    private void Start()
     {
         SoundManager.Instance.PlayMainMenuMusic();
     }
