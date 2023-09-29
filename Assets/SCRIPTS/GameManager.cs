@@ -95,14 +95,14 @@ public class GameManager : MonoBehaviour
         {
             case EstadoJuego.Calibrando:
 
-                if (InputManager.Instance.GetAxis($"Vertical{0}") > 0.3f)
+                if (InputManager.Instance.GetAxis($"Vertical{0}") > 0.6f)
                 {
                     Player1.Seleccionado = true;
                 }
 
                 if (GameControllerSettings.Instance.IsMultiPlayer())
                 {
-                    if (InputManager.Instance.GetAxis($"Vertical{1}") > 0.3f)
+                    if (InputManager.Instance.GetAxis($"Vertical{1}") > 0.6f)
                     {
                         Player2.Seleccionado = true;
                     }

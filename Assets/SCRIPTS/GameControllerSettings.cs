@@ -2,12 +2,12 @@
 
 public class GameControllerSettings
 {
-    [Serializable]
+    [Flags]
     public enum Difficulty
     {
-        Easy,
-        Medium,
-        Hard
+        Easy = 1,
+        Medium = 2,
+        Hard = 4
     }
 
     [Serializable]
@@ -31,10 +31,12 @@ public class GameControllerSettings
             return instance;
         }
     }
+
     public void setDifficulty(Difficulty newDif)
     {
         selectedDifficulty = newDif;
     }
+
     public void setGameMode(GameMode newGame)
     {
         selectedGameMode = newGame;
