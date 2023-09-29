@@ -30,23 +30,24 @@ public class PalletMover : ManejoPallets
 
     private void Update()
     {
+        float controlValue = 0.5f;
         switch (miInput)
         {
             case MoveType.WASD:
-                if (!Tenencia() && Desde.Tenencia() && InputManager.Instance.GetAxis(horizontalInputPlayer1) < -0.7f)
+                if (!Tenencia() && Desde.Tenencia() && InputManager.Instance.GetAxis(horizontalInputPlayer1) < -controlValue)
                 {
                     PrimerPaso();
                 }
 
                 else
                 {
-                    if (Tenencia() && InputManager.Instance.GetAxis(verticalInputPlayer1) < -0.7f)
+                    if (Tenencia() && InputManager.Instance.GetAxis(verticalInputPlayer1) < -controlValue)
                     {
                         SegundoPaso();
                     }
 
                     else if (segundoCompleto && Tenencia() &&
-                             InputManager.Instance.GetAxis(horizontalInputPlayer1) > 0.7f)
+                             InputManager.Instance.GetAxis(horizontalInputPlayer1) > controlValue)
                     {
                         TercerPaso();
                     }
@@ -54,17 +55,17 @@ public class PalletMover : ManejoPallets
 
                 break;
             case MoveType.Arrows:
-                if (!Tenencia() && Desde.Tenencia() && InputManager.Instance.GetAxis(horizontalInputPlayer2) < -0.7f)
+                if (!Tenencia() && Desde.Tenencia() && InputManager.Instance.GetAxis(horizontalInputPlayer2) < -controlValue)
                 {
                     PrimerPaso();
                 }
 
-                else if (Tenencia() && InputManager.Instance.GetAxis(verticalInputPlayer2) < -0.7f)
+                else if (Tenencia() && InputManager.Instance.GetAxis(verticalInputPlayer2) < -controlValue)
                 {
                     SegundoPaso();
                 }
 
-                else if (segundoCompleto && Tenencia() && InputManager.Instance.GetAxis(horizontalInputPlayer2) > 0.7f)
+                else if (segundoCompleto && Tenencia() && InputManager.Instance.GetAxis(horizontalInputPlayer2) > controlValue)
                 {
                     TercerPaso();
                 }
@@ -90,6 +91,7 @@ public class PalletMover : ManejoPallets
     void TercerPaso()
     {
         Dar(Hasta);
+        SoundManager.Instance.PlayMoneySound();
         segundoCompleto = false;
     }
 

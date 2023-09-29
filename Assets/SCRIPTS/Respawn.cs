@@ -79,7 +79,7 @@ public class Respawn : MonoBehaviour
 		}
 		
 		IgnorarColision(true);
-		
+		SoundManager.Instance.PlayCrashSound();
 	}
 	
 	public void Respawnear(Vector3 pos)

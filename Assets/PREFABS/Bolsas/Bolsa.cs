@@ -40,6 +40,7 @@ public class Bolsa : MonoBehaviour
 		if(coll.tag == TagPlayer)
 		{
 			Pj = coll.GetComponent<Player>();
+			SoundManager.Instance.PlayMoneySound();
 			if(Pj.AgregarBolsa(this))
 				Desaparecer();
 		}

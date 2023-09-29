@@ -104,17 +104,19 @@ public class MngPts : MonoBehaviour
 
     void SetGanador()
     {
+        SoundManager.Instance.PlayFinaleMusic();
         if (GameControllerSettings.Instance.selectedGameMode == GameControllerSettings.GameMode.Single)
         {
             var currentMaxScore = GameControllerSettings.Instance.GetMaxScore();
             if (DatosPartida.PtsGanador > currentMaxScore)
             {
+                SoundManager.Instance.PlayMoneySound();
                 winnerImage.sprite = Ganadores[2];
                 GameControllerSettings.Instance.SetMaxScore(DatosPartida.PtsGanador);
             }
             else
             {
-                winnerImage.sprite =  Ganadores[3];
+                winnerImage.sprite = Ganadores[3];
             }
         }
         else

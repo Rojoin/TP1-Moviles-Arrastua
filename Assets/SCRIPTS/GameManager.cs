@@ -57,6 +57,7 @@ public class GameManager : MonoBehaviour
     IEnumerator Start()
     {
         yield return null;
+        SoundManager.Instance.PlayGameplayMusic();
         if (!GameControllerSettings.Instance.IsMultiPlayer())
         {
             foreach (var cam in Player1Cam)
