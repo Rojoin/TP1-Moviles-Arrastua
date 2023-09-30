@@ -135,6 +135,8 @@ public class MngPts : MonoBehaviour
 
                     break;
             }
+
+            Time.timeScale = 1;
         }
     }
 

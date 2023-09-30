@@ -34,38 +34,40 @@ public class PalletMover : ManejoPallets
         switch (miInput)
         {
             case MoveType.WASD:
-                if (!Tenencia() && Desde.Tenencia() && InputManager.Instance.GetAxis(horizontalInputPlayer1) < -controlValue)
+                if (!Tenencia() && Desde.Tenencia() &&
+                    InputManager.Instance.GetAxis(horizontalInputPlayer1) < -controlValue)
                 {
                     PrimerPaso();
                 }
 
-                else
-                {
-                    if (Tenencia() && InputManager.Instance.GetAxis(verticalInputPlayer1) < -controlValue)
-                    {
-                        SegundoPaso();
-                    }
 
-                    else if (segundoCompleto && Tenencia() &&
-                             InputManager.Instance.GetAxis(horizontalInputPlayer1) > controlValue)
-                    {
-                        TercerPaso();
-                    }
-                }
-
-                break;
-            case MoveType.Arrows:
-                if (!Tenencia() && Desde.Tenencia() && InputManager.Instance.GetAxis(horizontalInputPlayer2) < -controlValue)
-                {
-                    PrimerPaso();
-                }
-
-                else if (Tenencia() && InputManager.Instance.GetAxis(verticalInputPlayer2) < -controlValue)
+                if (Tenencia() && InputManager.Instance.GetAxis(verticalInputPlayer1) < -controlValue)
                 {
                     SegundoPaso();
                 }
 
-                else if (segundoCompleto && Tenencia() && InputManager.Instance.GetAxis(horizontalInputPlayer2) > controlValue)
+                if (segundoCompleto && Tenencia() &&
+                    InputManager.Instance.GetAxis(horizontalInputPlayer1) > controlValue)
+                {
+                    TercerPaso();
+                }
+
+
+                break;
+            case MoveType.Arrows:
+                if (!Tenencia() && Desde.Tenencia() &&
+                    InputManager.Instance.GetAxis(horizontalInputPlayer2) < -controlValue)
+                {
+                    PrimerPaso();
+                }
+
+                if (Tenencia() && InputManager.Instance.GetAxis(verticalInputPlayer2) < -controlValue)
+                {
+                    SegundoPaso();
+                }
+
+                if (segundoCompleto && Tenencia() &&
+                    InputManager.Instance.GetAxis(horizontalInputPlayer2) > controlValue)
                 {
                     TercerPaso();
                 }

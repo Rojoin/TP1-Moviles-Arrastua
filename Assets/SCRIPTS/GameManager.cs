@@ -85,6 +85,10 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
+        if (Input.GetKey(KeyCode.Alpha5))
+        {
+            SceneManager.LoadScene(0);
+        }
 
         //CIERRA LA APLICACION
         if (Input.GetKeyDown(KeyCode.Escape))

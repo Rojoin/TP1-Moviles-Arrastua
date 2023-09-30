@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class VirtualJoystick : MonoBehaviour,IDragHandler,IPointerUpHandler,IPointerDownHandler
+public class VirtualJoystick : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointerDownHandler
 {
     [SerializeField] private RectTransform stick = null;
     [SerializeField] private Image background = null;
@@ -14,6 +15,13 @@ public class VirtualJoystick : MonoBehaviour,IDragHandler,IPointerUpHandler,IPoi
     {
         background.color = Color.red;
         stick.anchoredPosition = ConverToLocal(eventData);
+    }
+
+    public void Awake()
+    {
+#if UNITY_STANDALONE
+        Destroy(this.gameObject);
+#endif
     }
 
     private Vector2 ConverToLocal(PointerEventData eventData)
@@ -51,15 +59,21 @@ public class VirtualJoystick : MonoBehaviour,IDragHandler,IPointerUpHandler,IPoi
     {
         background.color = Color.gray;
         stick.anchoredPosition = Vector2.zero;
-       SetInputs(0f,0f);
+        SetInputs(0f, 0f);
     }
 
     private void OnDisable()
     {
-        SetInputs(0f,0f);
+        SetInputs(0f, 0f);
     }
 
-    private void SetHorizontal(float val) { InputManager.Instance.SetAxis("Horizontal" + player,val); }
+    private void SetHorizontal(float val)
+    {
+        InputManager.Instance.SetAxis("Horizontal" + player, val);
+    }
 
-    private void SetVertical(float val) { InputManager.Instance.SetAxis("Vertical" + player,val); }
+    private void SetVertical(float val)
+    {
+        InputManager.Instance.SetAxis("Vertical" + player, val);
+    }
 }

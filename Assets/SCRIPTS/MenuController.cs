@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -55,7 +56,10 @@ public class MenuController : MonoBehaviour
         ChangeSettings(credits,false);
         ChangeSettings(ChooseDifficulty,true);
     }
-    
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
 
     private void ChangeSettings(CanvasGroup canvas, bool state)
     {
