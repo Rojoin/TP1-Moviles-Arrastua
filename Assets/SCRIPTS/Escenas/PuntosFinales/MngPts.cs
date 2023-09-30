@@ -14,7 +14,7 @@ public class MngPts : MonoBehaviour
     public TextMeshProUGUI leftPlayer;
     public TextMeshProUGUI rightPlayer;
     public Image winnerImage;
-
+    public GameObject secondPlayer;
     public GameObject Fondo;
 
     public float TiempEspReiniciar = 10;
@@ -118,6 +118,7 @@ public class MngPts : MonoBehaviour
             {
                 winnerImage.sprite = Ganadores[3];
             }
+            secondPlayer.gameObject.SetActive(false);
         }
         else
         {
